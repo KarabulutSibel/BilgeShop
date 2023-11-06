@@ -1,0 +1,2 @@
+# BilgeShop
+Katmanlı MVC Projesi
