@@ -1,0 +1,17 @@
+﻿<div class="h-60 p-5 rounded-3 mt-5 mb-5" style="background-color:whitesmoke">
+    <h1 class="display-5 fw-bold">Alışveriş Sitesi</h1>
+    <p class="fw-bold">Bir alışveriş terapisi</p>
+</div>
+
+<div class="row">
+
+    <div class="col-3">
+        <vc:categories> </vc:categories>
+    </div>
+
+
+    <div class="col-9">
+        <vc:products category-id="@ViewBag.CategoryId"> </vc:products>
+    </div>
+
+</div>

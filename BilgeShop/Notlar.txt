@@ -1,0 +1,22 @@
+Ýlk önce Blank Solution açtýk. Yalnýzca klasör demek.
+
+1-> BilgeShop.Data projesi eklenmesi (Class Library)
+2-> BilgeShop.Business projesi eklenmesi (Class Library)
+3-> BilgeShop.WebUI projesi eklenmesi (Asp.Net Core Empty)
+
+-------------------------------------------------------------------------
+
+*** Proje baðkantýlarý için Add-Referance yapýyoruz. ***
+1-> BilgeShop.Business-> Add Referance -> BilgeShop.Data checkle.
+(Artýk Business katmanýnda Data Metotlarý kullanýlabilir.)
+
+2-> BilgeShop.WebUI -> Add Referance -> BilgeShop.Business checkle.
+(Artýk WebUI katmanýnda Business Metotlarý kullanýlabilir.)
+
+Not: Ayný zamanda dolaylý yoldan WebUI -> Data'ya baðlandý.
+
+--------------------------------------------------------------------------
+
+***** Data Katmaný Ýþlemleri *****
+
+1-> Entityleri oluþturmak 

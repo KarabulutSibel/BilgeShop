@@ -1,0 +1,82 @@
+﻿@model ProductFormViewModel
+
+<div class="row">
+
+    <div class="col-8 offset-2">
+
+        <div class="card" style="border:solid 2px">
+
+            <div class="card-header fw-bold fs-5">
+                Ürün Formu
+            </div>
+
+            <div class="card-body">
+
+                <form method="post" asp-controller="Product" asp-action="Save" enctype="multipart/form-data">
+
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+
+                    <input asp-for="Id" type="text" />
+
+                    <div class="mb-2">
+                        <label asp-for="Name"></label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="Description"></label>
+                        <input type="text" asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="UnitPrice"></label>
+                        <input type="text" asp-for="UnitPrice" class="form-control" />
+                        <span asp-validation-for="UnitPrice" class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="UnitsInStock"></label>
+                        <input type="number" asp-for="UnitsInStock" class="form-control" />
+                        <span asp-validation-for="UnitsInStock" class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="CategoryId"></label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))"></select>
+                        <span asp-validation-for="CategoryId" class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.ImagePath))
+                    {
+                        <div class="mb-2">
+                            <img width="100" heigt="100" src="~/images/products/@ViewBag.ImagePath" /> 
+                        </div>
+                    }
+
+                    <div class="mb-2">
+                        <label asp-for="File"></label>
+                        <input type="file" asp-for="File" class="form-control" />
+                        <span asp-validation-for="File" class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success mt-3 float-end">Formu Gönder</button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,103 @@
+﻿@using BilgeShop.WebUI.Extensions
+<html>
+<head>
+
+    <title>YZL8146 PROJE SİTESİ</title>
+
+    <meta name="description" content="YZL8146 sınıfı için yapılan MVC projesi">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Jquery, MVC, .Net, Asp.Net, BilgeAdam">
+    <meta name="author" content="Sibel KARABULUT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        label.required:after {
+            content: "*\00a0";
+            color: red;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none fw-bold">
+                    BilgeShop
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                </ul>
+
+                <div id="login" class="d-none">
+                    <partial name="_LoginPartial" model="new LoginViewModel()">
+                </div>
+
+
+                @if (!User.IsLogged())
+                {
+                    <div id="welcome">
+                        <partial name="_WelcomePartial">
+                    </div>
+                }
+                else
+                {
+                    var firstName = User.GetUserFirstName();
+                    var lastName = User.GetUserLastName();
+
+
+
+                    <div class="d-flex">
+                        <div class="mt-2">
+                            Hoş Geldin @firstName @lastName
+                        </div>
+                    </div>
+
+
+                    @if (User.IsAdmin())
+                    {
+                        <div class="ms-3">
+                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn btn-danger">Yönetim Paneli</a>
+                        </div>
+                    }
+
+
+
+                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-outline-warning ms-3">Çıkış Yap</a>
+                }
+
+
+
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="bg-dark text-white text-center fw-bold py-3 mt-auto">
+
+        YZL 8146 | BilgeShop
+
+        <p class="text-secondary">Tüm hakları Sibel Karabulut'a aittir.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        $('#btnGirisYap').click(function() {
+            $('#login').removeClass('d-none')
+            $('#welcome').addClass('d-none')
+        })
+
+        $('#btnIptal').click(function() {
+            $('#login').addClass('d-none')
+            $('#welcome').removeClass('d-none')
+        })
+    </script>
+
+</body>
+</html>
